@@ -35,7 +35,7 @@ public class SupermarketApplication extends Application {
         
         Scene scene = new Scene(root, 300, 250);
         
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("fadi");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
