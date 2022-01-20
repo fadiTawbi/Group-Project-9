@@ -28,8 +28,8 @@ public class Product extends Application {
     @Override
     public void start(Stage primaryStage) {
         Button btn = new Button();
-        btn.setText("edit");
-        Label invTitle=new Label("inventory title");
+        btn.setText("Edit");
+        Label invTitle=new Label("Inventory title");
         HBox hb=new HBox();
         
        
@@ -68,9 +68,9 @@ public class Product extends Application {
         
         FlowPane fp=new FlowPane();
         fp.setHgap(15);
-        Button bt1=new Button("edit");
-        Button bt2=new Button("del");
-        Button bt3=new Button("add");
+        Button bt1=new Button("Edit");
+        Button bt2=new Button("Del");
+        Button bt3=new Button("Add");
         bt1.setPrefSize(70, 50);
         bt2.setPrefSize(70, 50);
         bt3.setPrefSize(70, 50);
@@ -94,7 +94,7 @@ public class Product extends Application {
         
         Scene scene = new Scene(root, 800, 600);
         
-        primaryStage.setTitle("product");
+        primaryStage.setTitle("Product");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
