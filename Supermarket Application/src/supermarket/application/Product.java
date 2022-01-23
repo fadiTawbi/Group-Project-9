@@ -12,8 +12,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
@@ -27,8 +29,7 @@ public class Product extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Edit");
+        
         Label invTitle=new Label("Inventory title");
         HBox hb=new HBox();
         
@@ -42,8 +43,17 @@ public class Product extends Application {
         invTitle.setFont(Font.font(20));
         invTitle.setStyle("-fx-border-color: black;");
        
+     HBox hb1=new HBox();
+     Button btn = new Button();
+        btn.setText("Search");
+        TextField searchtxt = new TextField();
+        searchtxt.setPrefSize(200,40);
+        btn.setPrefSize(100, 40);
+        hb1.setSpacing(25);
+        hb1.getChildren().addAll(btn,searchtxt);
      
-       
+      
+         
        //tabelview creation 
         TableView tv=new TableView();
         
@@ -66,6 +76,8 @@ public class Product extends Application {
         
         
         
+        
+        
         FlowPane fp=new FlowPane();
         fp.setHgap(15);
         Button bt1=new Button("Edit");
@@ -76,8 +88,7 @@ public class Product extends Application {
         bt3.setPrefSize(70, 50);
         fp.getChildren().addAll(bt3, bt1,bt2);
         
-      
-          
+    
         
         
         
@@ -89,9 +100,11 @@ public class Product extends Application {
         root.setHgap(10);
         root.setAlignment(Pos.CENTER);
         root.getChildren().add(hb);
-        root.getChildren().add(tv);
+        root.getChildren().add(hb1);
+                      root.getChildren().add(tv);
+
         root.getChildren().add(fp);
-        
+
         Scene scene = new Scene(root, 800, 600);
         
         primaryStage.setTitle("Product");
