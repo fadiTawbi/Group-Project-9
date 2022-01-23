@@ -1,5 +1,5 @@
 
-package supermarket.application.classes;
+package supermarket.application;
 
 import java.util.Date;
 
@@ -24,6 +24,8 @@ public class products {
         this.price = price;
         this.sellPrice = sellPrice;
         this.quantity = quantity;
+        this.profit=(this.sellPrice-this.price)/this.price;
+        this.exactProfit=this.sellPrice-this.price;
         
     }
 
@@ -33,6 +35,8 @@ public class products {
         this.price = price;
         this.sellPrice = sellPrice;
         this.quantity = quantity;
+        this.profit=(this.sellPrice-this.price)/this.price;
+        this.exactProfit=this.sellPrice-this.price;
     }
 
 
@@ -44,6 +48,18 @@ public class products {
         this.exp = exp;
     }
 
+    public void setExactProfit(double exactProfit) {
+        this.exactProfit = exactProfit;
+        this.sellPrice=this.price+this.exactProfit;
+        this.profit=(this.sellPrice-this.price)/this.price;
+    }
+
+    public double getExactProfit() {
+        return exactProfit;
+    }
+    
+    
+
     public void setId(int id) {
         this.id = id;
     }
@@ -51,12 +67,14 @@ public class products {
     public void setPrice(double price) {
         this.price = price;
         this.profit=(this.sellPrice-this.price)/this.price;
+        this.exactProfit=this.sellPrice-this.price;
         
     }
 
     public void setProfit(double profit) {
         this.profit = profit;
         this.sellPrice=this.price+this.price*profit;
+        this.exactProfit=this.sellPrice-this.price;
         
     }
 
