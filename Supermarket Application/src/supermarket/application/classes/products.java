@@ -17,6 +17,10 @@ public class products {
     private double sellPrice;
     private int quantity;
 
+    public products() {
+    }
+
+    
     public products(String prod, Date exp, int id, double price, double profit, double sellPrice, int quantity) {
         this.prod = prod;
         this.exp = exp;
