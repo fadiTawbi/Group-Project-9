@@ -79,7 +79,7 @@ public class HomePage extends Application{
         primaryStage.setTitle("Main Menu");
         primaryStage.setScene(scene);
         primaryStage.show();
-        
+        changeToLogin();
 
     }
     

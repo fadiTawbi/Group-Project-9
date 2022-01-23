@@ -42,6 +42,7 @@ public class CashierScene extends BorderPane {
         
         //Creating Left Panel with items purchases 
         
+        
         HBox purchase = new HBox();
         VBox items = new VBox();
         VBox quantity = new VBox();
@@ -163,6 +164,7 @@ public class CashierScene extends BorderPane {
         controlbtns.setSpacing(25);
         controlbtns.setPadding(new Insets (5,5,5,5));
         
+        
         controlbtns.getChildren().add(btnMain);
         controlbtns.setAlignment(Pos.BOTTOM_RIGHT);
         
@@ -176,6 +178,7 @@ public class CashierScene extends BorderPane {
         btnMain.setOnAction(e->{
             
             changeToHomePage();
+            
         });
        
         
