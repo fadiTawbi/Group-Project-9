@@ -17,6 +17,19 @@ public class products {
     private double sellPrice;
     private int quantity;
 
+    public products(String prod, Date exp, int id, double price, double profit, double sellPrice, int quantity) {
+        this.prod = prod;
+        this.exp = exp;
+        this.id = id;
+        this.price = price;
+        this.profit = profit;
+        
+        this.sellPrice = sellPrice;
+        this.quantity = quantity;
+        this.exactProfit=this.sellPrice-this.price;
+    }
+
+    
     public products(String prod, Date exp, int id, double price, double sellPrice, int quantity) {
         this.prod = prod;
         this.exp = exp;
