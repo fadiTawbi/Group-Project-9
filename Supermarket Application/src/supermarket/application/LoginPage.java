@@ -88,6 +88,7 @@ public class LoginPage extends GridPane {
                
                
                HomePage.reset();
+               
            }
            else {
                

@@ -5,7 +5,9 @@ package supermarket.application.classes;
  *
  * @author Manuel
  */
-public class user {
+
+    public class user {
+        
     private String username;
     private String id;
     private String pass;
@@ -15,7 +17,9 @@ public class user {
         this.id = id;
         this.pass = pass;
     }
-
+    
+    
+    
     public String getUsername() {
         return username;
     }

@@ -5,32 +5,31 @@
  */
 package supermarket.application;
 
-import javafx.application.Application;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
 /**
  *
  * @author manuel
  */
-public class Product extends Application {
-    
-    @Override
-    public void start(Stage primaryStage) {
+
+public class Product extends FlowPane {
         
-        Label invTitle=new Label("Inventory title");
+    private Label invTitle;
+   
+    public  Product() {
+        
+        invTitle=new Label("Inventory title");
         HBox hb=new HBox();
         
        
@@ -83,40 +82,44 @@ public class Product extends Application {
         Button bt1=new Button("Edit");
         Button bt2=new Button("Del");
         Button bt3=new Button("Add");
+        Button bt4=new Button("Back");
+        
         bt1.setPrefSize(70, 50);
         bt2.setPrefSize(70, 50);
         bt3.setPrefSize(70, 50);
-        fp.getChildren().addAll(bt3, bt1,bt2);
+        bt4.setPrefSize(70, 50);
+        
+        fp.getChildren().addAll(bt3, bt1,bt2,bt4);
         
     
         
         
+        bt4.setOnAction(e->{
         
+           HomePage.changeToInventory();
+           
+        });
        
        
         //add all panes to root        
-        FlowPane root =new FlowPane(Orientation.VERTICAL);
-        root.setVgap(10);
-        root.setHgap(10);
-        root.setAlignment(Pos.CENTER);
-        root.getChildren().add(hb);
-        root.getChildren().add(hb1);
-                      root.getChildren().add(tv);
-
-        root.getChildren().add(fp);
-
-        Scene scene = new Scene(root, 800, 600);
+        this.setOrientation(Orientation.VERTICAL);
+        this.setVgap(10);
+        this.setHgap(10);
+        this.setAlignment(Pos.CENTER);
+        this.getChildren().add(hb);
+        this.getChildren().add(hb1);
+        this.getChildren().add(tv);
+        this.getChildren().add(fp);
         
-        primaryStage.setTitle("Product");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        
+        
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
+    
+    public void setInvTitle(String invString){
+        
+        this.invTitle.setText(invString);
+        
+        
     }
     
 }

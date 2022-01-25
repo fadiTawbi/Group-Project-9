@@ -2,11 +2,14 @@
 package supermarket.application;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -18,6 +21,8 @@ import javafx.stage.Stage;
  */
 
 public class Inventory extends BorderPane {
+    
+  
     
     
     public  Inventory () {
@@ -58,9 +63,11 @@ public class Inventory extends BorderPane {
         gridlist.setPadding(new Insets (25,10,10,10));
        
        
-       Button[] categories = new Button[20];  
+         Button[]  categories = new Button[20];  
+          
        for (int i = 0 ; i < categories.length;i++){
            categories[i]= new Button("Inventory " +(i+1));
+           
                 if (i<5){     
                 gridlist.add(categories[i],i , 0);
               }
@@ -75,8 +82,14 @@ public class Inventory extends BorderPane {
                 gridlist.add(categories[i],i-15 ,3);
               } 
              categories[i].setPrefSize(110, 100);
-       }
+             
+             
+             categories[i].setOnAction(e->{
+                 
+                 
+             });
        
+                     }
        
         //Buttons Functions
         
@@ -97,7 +110,26 @@ public class Inventory extends BorderPane {
     }
     
      private void changeToHomePage() {
+         
+     
             HomePage.reset();
+            
     }
+
+    private EventHandler<ActionEvent> MyHandler() {
+        
+                                    HomePage.changeToProduct();
+
+                    return null;
+                    
+                   
+        }
+
+  
+
+    
+
+    
+     
      
 }

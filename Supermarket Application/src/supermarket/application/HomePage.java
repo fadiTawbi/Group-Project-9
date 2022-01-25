@@ -85,7 +85,7 @@ public class HomePage extends Application{
     
  
     
-         public  void changeToCashier(){
+         public static  void changeToCashier(){
          
               CashierScene scene2 = new CashierScene();        
 
@@ -97,7 +97,7 @@ public class HomePage extends Application{
               
     }
     
-         public void changeToLogin() {
+         public static void changeToLogin() {
             
               LoginPage scene3 = new LoginPage();        
 
@@ -109,7 +109,7 @@ public class HomePage extends Application{
         
     }
    
-           public  void changeToInventory() {
+           public static  void changeToInventory() {
             
               Inventory scene4 = new Inventory();        
 
@@ -132,8 +132,33 @@ public class HomePage extends Application{
               primaryStage.setTitle("Create Account");
         
     }
+     
+         public  static void changeToProduct() {
             
+            Product scene6 = new Product();        
+
+              Scene newwindow = new Scene(scene6,800,600);
+              
+              primaryStage.setScene(newwindow);
+              primaryStage.centerOnScreen();
+              primaryStage.setTitle("Product");
+        
+    }
+         
     
+            
+        public  static void changeToProduct(String invSelected) {
+            
+            Product scene7 = new Product();        
+            scene7.setInvTitle(invSelected);
+              Scene newwindow = new Scene(scene7,800,600);
+              
+              primaryStage.setScene(newwindow);
+              primaryStage.centerOnScreen();
+              primaryStage.setTitle("Product");
+        
+    }
+        
        
     
     static void reset() {
