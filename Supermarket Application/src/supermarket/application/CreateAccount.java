@@ -57,15 +57,18 @@ public class CreateAccount extends GridPane{
         Button btn1 = new Button("Create Account");
         this.add(btn1, 1, 4);
         
+        Button btn2 = new Button ("back");
+        this.add(btn2, 1, 5);
         
        
-        btn1.setOnAction(e->{
+        btn2.setOnAction(e->{
             
-            HomePage.reset();
+            HomePage.changeToLogin();
+            
         });
         
         
-       
+        
     }
     
     

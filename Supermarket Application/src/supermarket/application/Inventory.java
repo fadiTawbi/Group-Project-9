@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 public class Inventory extends BorderPane {
     
   
-    
+    public final int index = 0 ;
     
     public  Inventory () {
         
@@ -83,8 +83,13 @@ public class Inventory extends BorderPane {
               } 
              categories[i].setPrefSize(110, 100);
              
+             final String title = categories[i].getText();
              
              categories[i].setOnAction(e->{
+                 
+                 
+                 
+                 HomePage.changeToProduct(title);
                  
                  
              });
@@ -95,9 +100,14 @@ public class Inventory extends BorderPane {
         
          back.setOnAction(e->{
             
-            changeToHomePage();
+           HomePage.reset();
         });
          
+        finance.setOnAction(e->{
+            
+           HomePage.changeToFinance();
+           
+        });
          
         searchbar.getChildren().addAll(searchbtn,searchtxt);
         btnPanel.getChildren().addAll(finance,edit,back);
@@ -109,25 +119,10 @@ public class Inventory extends BorderPane {
      
     }
     
-     private void changeToHomePage() {
-         
-     
-            HomePage.reset();
-            
-    }
-
-    private EventHandler<ActionEvent> MyHandler() {
-        
-                                    HomePage.changeToProduct();
-
-                    return null;
-                    
-                   
-        }
-
   
 
-    
+   
+
 
     
      

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package supermarket.application.classes;
 
 import java.sql.Connection;
@@ -38,8 +35,10 @@ public class ConnectToDb {
         String query = "Select Name From Product ";
         ResultSet result =statement.executeQuery(query);
         
-        result.get
+        for (int i =0; i < result.getFetchSize();i++){
+        System.out.println(result.next());
         
+        }
         
         connection.close();
         

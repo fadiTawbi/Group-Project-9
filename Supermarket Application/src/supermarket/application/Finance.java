@@ -19,10 +19,10 @@ import javafx.stage.Stage;
  *
  * @author Manuel
  */
-public class Finance extends Application {
+public class Finance extends StackPane {
     
-    @Override
-    public void start(Stage primaryStage) {
+   
+    public  Finance( ) {
        
          TableView table=new TableView();
         
@@ -34,16 +34,17 @@ public class Finance extends Application {
         
         FlowPane pane=new FlowPane();
       
-        Button bt=new Button();
-        bt.setText("Sold Items");
-        Button bt1=new Button();
-        bt1.setText("Profit");
-        bt.setPrefSize(100, 50);
-        bt1.setPrefSize(100,50);
+        Button sold=new Button("Sold Items");
+        
+        Button profit=new Button("Profit");
+        Button back = new Button("Back");
+        sold.setPrefSize(100, 50);
+        profit.setPrefSize(100,50);
+        back.setPrefSize(100,50);
         VBox vbox=new VBox();
         vbox.setPadding(new Insets(10,10,10,10));
         vbox.setSpacing(10);
-        vbox.getChildren().addAll(bt,bt1);
+        vbox.getChildren().addAll(sold,profit,back);
         
         pane.setPadding(new Insets(20,20,20,20));
         
@@ -66,8 +67,7 @@ public class Finance extends Application {
         subtotal.getChildren().addAll(label,label2);
         bp.setBottom(subtotal);
         bp.setLeft(pane);
-        //bp.getChildren()
-        StackPane root = new StackPane();
+       
        
         
         pane.getChildren().add(table);
@@ -77,22 +77,15 @@ public class Finance extends Application {
         
         
         //root.getChildren().add(pane);
-        root.getChildren().add(bp);
+        this.getChildren().add(bp);
         
+        back.setOnAction(e->{
+            
+            HomePage.changeToInventory();
+        });
+              
         
-        Scene scene = new Scene(root, 450, 600);
-        
-        
-        primaryStage.setTitle("finance");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+       
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
 }

@@ -5,24 +5,24 @@
  */
 package supermarket.application;
 
-import javafx.application.Application;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
+import javafx.scene.layout.VBox;
 
 /**
  *
  * @author User
  */
-public class Notification extends Application {
+public class Notification extends VBox {
     
-    @Override
-    public void start(Stage primaryStage) {
+    
+    public  Notification () {
+        
+        
+        
+        
         TableView table=new TableView();
         TableColumn date=new TableColumn("dat");
         TableColumn prod=new TableColumn("product");
@@ -30,26 +30,27 @@ public class Notification extends Application {
         table.getColumns().add(date);
         table.getColumns().add(prod);
         table.getColumns().add(msg);
+        Button back = new Button("Back");
         
         
-        StackPane root = new StackPane();
+        back.setOnAction(e ->{ 
+            
+            HomePage.reset();
+            
+        });
+        
        // root.setAlignment(Pos.CENTER);
-        root.setPadding(new Insets(10,10,10,10));
-        root.setPrefSize(200, 200);
-        root.getChildren().add(table);
+       
+        this.setPadding(new Insets(10,10,10,10));
+        this.setPrefSize(200, 200);
+        this.getChildren().addAll(table,back);
         
-        Scene scene = new Scene(root, 300, 400);
         
-        primaryStage.setTitle("Notification");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+     
+       
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
+   
+    
     
 }

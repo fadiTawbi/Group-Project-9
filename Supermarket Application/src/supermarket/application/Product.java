@@ -101,6 +101,8 @@ public class Product extends FlowPane {
         });
        
        
+        
+        
         //add all panes to root        
         this.setOrientation(Orientation.VERTICAL);
         this.setVgap(10);

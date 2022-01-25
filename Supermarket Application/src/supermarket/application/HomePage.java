@@ -24,8 +24,8 @@ public class HomePage extends Application{
     
     static Scene scene;
     static Stage primaryStage;
-    
-   
+
+  
     
     @Override
     public void start(Stage primaryStage)  {
@@ -73,6 +73,12 @@ public class HomePage extends Application{
              changeToInventory();
          });
       
+          
+          notificationBtn.setOnAction(e->{
+             
+             changeToNotification();
+             
+         });
           
           
          scene = new Scene(root, 300, 275);
@@ -158,7 +164,30 @@ public class HomePage extends Application{
               primaryStage.setTitle("Product");
         
     }
+          public  static void changeToFinance() {
+            
+            Finance scene8 = new Finance();        
+            
+              Scene newwindow = new Scene(scene8,450,600);
+              
+              primaryStage.setScene(newwindow);
+              primaryStage.centerOnScreen();
+              primaryStage.setTitle("Finance");
         
+    }
+          
+          
+            public  static void changeToNotification() {
+            
+            Notification scene9 = new Notification();        
+
+              Scene newwindow = new Scene(scene9,300,400);
+              
+              primaryStage.setScene(newwindow);
+              primaryStage.centerOnScreen();
+              primaryStage.setTitle("Notification");
+        
+    }
        
     
     static void reset() {
