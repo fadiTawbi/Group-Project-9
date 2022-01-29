@@ -1,6 +1,10 @@
 
 package supermarket.application;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,6 +19,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import supermarket.application.classes.ConnectToDb;
+import supermarket.application.classes.LoginDB;
 
 /**
  *
@@ -25,8 +31,6 @@ import javafx.stage.Stage;
 
 public class LoginPage extends GridPane {
     
-    
-        
         private TextField username;
         private PasswordField pwBox;
         private Text scenetitle;
@@ -83,18 +87,18 @@ public class LoginPage extends GridPane {
        public void changeToMain(){
            
            //Admin Access
-        
-           if ("admin".equals(username.getText()) && "admin".equals(pwBox.getText())){
-               
-               
-               HomePage.reset();
-               
-           }
-           else {
-               
-               scenetitle.setText("Incorrect Username or\n"+"Password");
-               System.out.println("Incorrect Username or Password");
-           }
+           String usernameStr = username.getText();
+           String password = pwBox.getText();
+           
+            boolean result = LoginDB.getInstance()
+                .login(usernameStr, password);
+            if (result){
+                HomePage.reset();
+            }
+            else {
+                scenetitle.setText("Incorrect Username or\n"+"Password");
+                System.out.println("Incorrect Username or Password");
+            }
           
        }
    
