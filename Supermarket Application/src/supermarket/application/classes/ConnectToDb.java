@@ -55,14 +55,15 @@ public class ConnectToDb {
 
     }
     
-    public void executeStatement(Connection connection, String statementStr){
+    public int executeStatement(Connection connection, String statementStr){
+        int num=0;
         
         try{
             connection = getConnection();
             
             Statement statement = connection.createStatement();
             
-            statement.executeUpdate(statementStr);
+            num=statement.executeUpdate(statementStr);
         }
         catch(ClassNotFoundException ex1){
             
@@ -70,7 +71,7 @@ public class ConnectToDb {
         catch(SQLException ex2){
             
         }
-        
+     return num;   
     }
     
     public ResultSet executeQuery(Connection connection, String query){
