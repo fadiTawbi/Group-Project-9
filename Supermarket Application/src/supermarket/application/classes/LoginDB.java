@@ -10,6 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.text.Text;
+import supermarket.application.CreateAccount;
+import supermarket.application.HomePage;
 
 /**
  *
@@ -53,5 +56,28 @@ public class LoginDB {
             }
         }
         return userExists;
+    }
+    public void signup(String username,String password,int code){
+        Connection connection =null;
+        try {
+            connection = ConnectToDb.getInstance().getConnection();
+            
+            int num=ConnectToDb.getInstance().executeStatement(connection,"INSERT INTO user Values ('" +username+ "' , '" +password+ "' , '" +code+ "')");
+            
+            if(num==1){
+                System.out.println("user created");
+                HomePage.changeToLogin();
+                
+            }
+            
+           
+            
+            connection.close();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoginDB.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 }
