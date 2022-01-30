@@ -35,7 +35,7 @@ public class CashierScene extends BorderPane {
     public  CashierScene()  {
         
         
-     
+        //added coment to test push
         
         //Creating Left Panel with items purchases 
         
