@@ -90,9 +90,10 @@ public class LoginPage extends GridPane {
            String usernameStr = username.getText();
            String password = pwBox.getText();
            
-            boolean result = LoginDB.getInstance()
-                .login(usernameStr, password);
+            boolean result = LoginDB.getInstance().login(usernameStr, password);
+         
             if (result){
+                
                 HomePage.reset();
             }
             else {
@@ -103,3 +104,4 @@ public class LoginPage extends GridPane {
        }
    
 }
+               

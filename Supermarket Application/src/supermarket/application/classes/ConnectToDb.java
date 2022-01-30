@@ -37,7 +37,7 @@ public class ConnectToDb {
     
     public static void init(){
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConnectToDb.class.getName()).log(Level.SEVERE, null, ex);
         }

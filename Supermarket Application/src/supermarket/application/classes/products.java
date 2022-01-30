@@ -1,5 +1,5 @@
 
-package supermarket.application;
+package supermarket.application.classes;
 
 import java.util.Date;
 

@@ -42,8 +42,8 @@ public class Product extends FlowPane {
         invTitle.setFont(Font.font(20));
         invTitle.setStyle("-fx-border-color: black;");
        
-     HBox hb1=new HBox();
-     Button btn = new Button();
+        HBox hb1=new HBox();
+        Button btn = new Button();
         btn.setText("Search");
         TextField searchtxt = new TextField();
         searchtxt.setPrefSize(200,40);

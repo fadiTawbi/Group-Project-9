@@ -4,6 +4,13 @@
 package supermarket.application;
 
 
+
+import com.sun.tracing.ProviderName;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -17,6 +24,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import supermarket.application.classes.ConnectToDb;
+import supermarket.application.classes.products;
 
 
 
@@ -99,55 +108,73 @@ public class CashierScene extends BorderPane {
         gridlist2.setPadding(new Insets (0,10,10,10));
  
         
-        Button[] categories = new Button[20];
-        
-        Button[] products = new Button[20];
-        
-       //Filling products in Girdlist
-            
-       for (int i = 0 ; i < products.length;i++){
-                    products[i]= new Button("Product " +(i+1));
-                         if (i<5){     
-                         gridlist2.add(products[i],i , 0);
-                       }
-                         if (5 <= i && i<10){
-                         gridlist2.add(products[i],i-5 ,1);
-                       }        
-                        if (10 <= i && i<15){
+        Button[] categories = new Button[6];
 
-                         gridlist2.add(products[i],i-10 , 2);
-                       }
-                         if (15 <= i && i<=20){
-                         gridlist2.add(products[i],i-15 ,3);
-                       } 
-                      products[i].setPrefSize(110, 100);
-                }
-       
-       
-       
+        
+            
+           
+ 
        //Filling Categories in Girdlist
        
+     
+       
+       categories[0]= new Button("bread");
+       categories[1]= new Button("Cheese");
+       categories[2]= new Button("Fruit");
+       categories[3]= new Button("Meat");
+       categories[4]= new Button("Pasta");
+       categories[5]= new Button("Vegetables");
+       
+       
+       
+       
        for (int i = 0 ; i < categories.length;i++){
-           categories[i]= new Button("Inventory " +(i+1));
+           
                 if (i<5){     
                 gridlist.add(categories[i],i , 0);
               }
                 if (5 <= i && i<10){
                 gridlist.add(categories[i],i-5 ,1);
               }        
-               if (10 <= i && i<15){
-                    
-                gridlist.add(categories[i],i-10 , 2);
-              }
-                if (15 <= i && i<=20){
-                gridlist.add(categories[i],i-15 ,3);
-              } 
+            
              categories[i].setPrefSize(110, 100);
-       
+             
+             String categoryName = categories[i].getText();
        
               categories[i].setOnAction(e -> {
-                  itemspanel.getChildren().remove(gridlist);
-                  itemspanel.getChildren().addAll(gridlist2);
+              
+                 String[] names= getProducts(categoryName);
+              
+                  
+                 
+                  
+                 
+                         
+       //Filling products in Girdlist
+            
+       Button[] products = new Button[names.length];
+       
+       
+       for (int i2 = 0 ; i2 < products.length;i2++){
+                    products[i2]= new Button(names[i2]);
+                         if (i2<5){     
+                         gridlist2.add(products[i2],i2 , 0);
+                       }
+                         if (5 <= i2 && i2<10){
+                         gridlist2.add(products[i2],i2-5 ,1);
+                       }
+                      
+                         
+                      products[i2].setPrefSize(110, 100);
+                      
+                      
+                }
+//       
+//       
+//       
+       
+//                  itemspanel.getChildren().remove(gridlist);
+//                  itemspanel.getChildren().addAll(gridlist2);
        });
                   
        
@@ -232,13 +259,76 @@ public class CashierScene extends BorderPane {
 
          
     }
+    
+    private void getProduct (){
+        
+        products product = new products();
+        
+        
+    }
 
     private void changeToHomePage() {
             HomePage.reset();
     }
     
-   
-      
+    public String[] getProducts(String name){
+        
+        
+        Connection connection =null;
+        String[] prodname = null;
+        
+        try {
+            connection = ConnectToDb.getInstance().getConnection();
+            
+            ResultSet num=ConnectToDb.getInstance().executeQuery(connection,"Select item_id From inventory Where name ='"+name+"'");
+             int prod_id;
+             int i = 0 ;
+            
+            while(num.next()){
+           
+                i++;
+           
+            }  
+            
+            prodname = new String[i+1];
+            
+            
+            
+            
+             ResultSet num2 =ConnectToDb.getInstance().executeQuery(connection,"Select item_id From inventory Where name ='"+name+"'");
+             
+             int[] itemsnumber= new int[i];
+             
+             
+             for (int index = 0 ; index <i+1 ; index++){
+             
+                 prod_id = num2.getInt("item_id");
+                 
+                 itemsnumber[index]= prod_id;
+                 
+                 
+                 num2.next();
+                         }
+            
+//             ResultSet names =ConnectToDb.getInstance().executeQuery(connection,"Select Name From Product Where Code ='"+prod_id+"'");
+//                 
+//                 prodname[index] = names.getString("Name");
+//                 
+//             
+            
+            
+            
+            connection.close();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CashierScene.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CashierScene.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return prodname;
+        
+        
+        
+    }
  
     
 }

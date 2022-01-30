@@ -57,6 +57,8 @@ public class LoginDB {
         }
         return userExists;
     }
+    
+    
     public void signup(String username,String password,int code){
         Connection connection =null;
         try {

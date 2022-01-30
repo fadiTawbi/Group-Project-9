@@ -65,32 +65,32 @@ public class Inventory extends BorderPane {
        
          Button[]  categories = new Button[20];  
           
-       for (int i = 0 ; i < categories.length;i++){
-           categories[i]= new Button("Inventory " +(i+1));
-           
-                if (i<5){     
-                gridlist.add(categories[i],i , 0);
-              }
-                if (5 <= i && i<10){
-                gridlist.add(categories[i],i-5 ,1);
-              }        
-               if (10 <= i && i<15){
-                    
-                gridlist.add(categories[i],i-10 , 2);
-              }
-                if (15 <= i && i<=20){
-                gridlist.add(categories[i],i-15 ,3);
-              } 
-             categories[i].setPrefSize(110, 100);
-             
-             final String title = categories[i].getText();
-             
-             categories[i].setOnAction(e->{
-                 
-                 
-                 
-                 HomePage.changeToProduct(title);
-                 
+        for (int i = 0 ; i < categories.length;i++){
+            categories[i]= new Button("Inventory " +(i+1));
+
+                 if (i<5){     
+                 gridlist.add(categories[i],i , 0);
+               }
+                 if (5 <= i && i<10){
+                 gridlist.add(categories[i],i-5 ,1);
+               }        
+                if (10 <= i && i<15){
+
+                 gridlist.add(categories[i],i-10 , 2);
+               }
+                 if (15 <= i && i<=20){
+                 gridlist.add(categories[i],i-15 ,3);
+               } 
+              categories[i].setPrefSize(110, 100);
+
+              final String title = categories[i].getText();
+
+              categories[i].setOnAction(e->{
+
+
+
+                  HomePage.changeToProduct(title);
+
                  
              });
        
